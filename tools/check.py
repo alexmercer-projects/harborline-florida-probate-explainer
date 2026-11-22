@@ -69,5 +69,11 @@ if "--links" in sys.argv:
         print(f"  {code}  {url}")
         if code != 200 and code != 403: problems.append(f"link failed: {url} ({code})")
 
+# The writer's notes quote these numbers, so make sure they still match the copy.
+notes_text = soup.find("section", class_="notes").get_text(" ")
+for label, val in [("grade", f"grade {textstat.flesch_kincaid_grade(text)}"), ("words", f"{words:,} words"),
+                   ("title", f"Title tag {len(title)} characters"), ("meta", f"meta description {len(meta)}")]:
+    if val not in notes_text: problems.append(f"writer's notes are out of date ({label}: {val})")
+
 print("OK" if not problems else "PROBLEMS:\n  " + "\n  ".join(problems))
 sys.exit(1 if problems else 0)
