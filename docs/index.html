@@ -31,6 +31,7 @@
   </script>
 </head>
 <body>
+<script>if (location.search.indexOf("print") > -1) document.documentElement.classList.add("is-print");</script>
 <div class="am-demo-bar" role="note" style="font:14px/1.45 system-ui,-apple-system,'Segoe UI',sans-serif;background:#0f0f0f;color:#f3f3ef;padding:10px 16px;display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between;align-items:center;position:relative;z-index:50"><span><b>Concept demo by Alex Mercer.</b> Fictional firm, not client work. Harborline Estate &amp; Probate is made up and so are its phone number and email. The law is real and sourced.</span><a href="../index.html" style="color:#f3f3ef;text-decoration:underline;text-underline-offset:3px">Back to Alex Mercer&#39;s portfolio</a></div>
 
 <header class="site">
@@ -50,7 +51,8 @@
 
 <main id="top">
   <div class="hero">
-    <div class="wrap">
+    <div class="wrap hero__in">
+     <div class="hero__text">
       <p class="crumbs"><span>Resources</span> <span aria-hidden="true">/</span> <span>Probate and estate administration</span></p>
       <p class="eyebrow">Practice guide &middot; Florida probate</p>
       <h1>Do I have to go through probate in Florida? <em>Summary vs. formal administration, explained</em></h1>
@@ -60,6 +62,15 @@
         <li>About 9 minutes to read</li>
         <li>Reflects the July 1, 2026 change to the summary administration limit</li>
       </ul>
+     </div>
+      <aside class="glance" aria-label="Florida probate numbers at a glance">
+        <p class="glance__k">At a glance</p>
+        <dl>
+          <div><dt>$150,000</dt><dd>Summary administration limit since July 1, 2026, after exempt property (§&nbsp;735.201)</dd></div>
+          <div><dt>3 months</dt><dd>Usual window for creditor claims after the first published notice (§&nbsp;733.702)</dd></div>
+          <div><dt>2 years</dt><dd>Outside limit on most claims against the person, probate or not (§&nbsp;733.710)</dd></div>
+        </dl>
+      </aside>
     </div>
   </div>
 
@@ -270,14 +281,14 @@
       <div class="notes__grid">
         <div class="ncard">
           <h3>Reading level</h3>
-          <p class="ncard__big">__FK__ <small>grade</small></p>
-          <p>Target: 8th to 9th grade, since readers are often grieving family members, not lawyers. Measured on the article body (__WORDS__ words, headings and sources excluded) with the textstat library: Flesch-Kincaid grade __FK__, Flesch Reading Ease __FRE__. Legal terms are kept where families will see them on court papers ("personal representative," "summary administration") and explained the first time.</p>
+          <p class="ncard__big">7.3 <small>grade</small></p>
+          <p>Target: 8th grade or below, since readers are often grieving family members, not lawyers. Measured on the article body (1,858 words, headings and sources left out, list items and table cells counted as their own sentences) with the textstat library: Flesch-Kincaid grade 7.3, Flesch Reading Ease 66.3. Legal terms are kept where families will see them on court papers ("personal representative," "summary administration") and explained the first time.</p>
         </div>
         <div class="ncard">
           <h3>Keyword plan</h3>
           <p><b>Primary:</b> do I have to go through probate in Florida.</p>
           <p><b>Secondary:</b> summary administration Florida, Florida probate $150,000, formal administration Florida, what assets avoid probate in Florida, Florida homestead probate.</p>
-          <p>Title tag __TLEN__ characters, meta description __MLEN__. Question-style H2s match how people search. FAQPage schema on the five questions.</p>
+          <p>Title tag 56 characters, meta description 155. Question-style H2s match how people search. FAQPage schema on the five questions.</p>
         </div>
         <div class="ncard">
           <h3>Florida Bar rules</h3>
@@ -308,5 +319,11 @@
     <p>Concept demo written by Alex Mercer. Not a real law firm and not client work.</p>
   </div>
 </footer>
+<script>
+  // Open every FAQ answer when printing or when the page is saved as a PDF.
+  function openAll() { document.querySelectorAll(".faq details").forEach(function (d) { d.open = true; }); }
+  window.addEventListener("beforeprint", openAll);
+  if (document.documentElement.classList.contains("is-print")) openAll();
+</script>
 </body>
 </html>
